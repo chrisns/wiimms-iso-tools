@@ -1,0 +1,3 @@
+[submodule "wiimms-iso-tools"]
+	path = wiimms-iso-tools
+	url = git@github.com:Wiimm/wiimms-iso-tools.git
