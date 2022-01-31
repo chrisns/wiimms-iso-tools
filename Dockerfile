@@ -1,4 +1,4 @@
-FROM ubuntu@sha256:b5a61709a9a44284d88fb12e5c48db0409cfad5b69d4ff8224077c57302df9cf
+FROM ubuntu@20.04 as build
 RUN apt-get update && \
   apt-get install -y \
   bash \
@@ -8,6 +8,6 @@ WORKDIR /build
 COPY wiimms-iso-tools/project .
 RUN make
 
-FROM ubuntu@sha256:b5a61709a9a44284d88fb12e5c48db0409cfad5b69d4ff8224077c57302df9cf
+FROM ubuntu@20.04
 USER 1000
-COPY --from=0 /build/bin/* /usr/local/bin/
+COPY --from=build /build/bin/* /usr/local/bin/
